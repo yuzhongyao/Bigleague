@@ -23,6 +23,7 @@ CREATE TABLE players (
 --Table: Games
 CREATE TABLE games (
     game_id SERIAL PRIMARY KEY,
+    season int NOT NULL,
     home_team int  REFERENCES teams(team_id),
     away_team int  REFERENCES teams(team_id),
     home_points int NOT NULL,
@@ -42,8 +43,8 @@ CREATE TABLE player_stats (
     blocks int NOT NULL DEFAULT 0,
     free_throw_attempts int NOT NULL DEFAULT 0,
     free_throw_made int NOT NULL DEFAULT 0,
-    field_goal_attempts int NOT NULL DEFAULT 0,
-    field_goal_made int NOT NULL DEFAULT 0,
+    two_point_attempts int NOT NULL DEFAULT 0,
+    two_points_made int NOT NULL DEFAULT 0,
     three_point_attempts int NOT NULL DEFAULT 0,
     three_points_made int NOT NULL DEFAULT 0,
     fouls int NOT NULL DEFAULT 0,

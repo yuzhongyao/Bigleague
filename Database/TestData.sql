@@ -42,31 +42,31 @@ VALUES  (1, 'Justin', 'Tee'),
         (2, 'Steven', 'He'),
 
 --Team 3 Lakers
-        (3, 'Kobe', 'Bryant'), --16
-        (3, 'Shak', 'O''neal'),
-        (3, 'Kamar', 'De''shae'),
-        (3, 'Jordan', 'Pippen'),
-        (3, 'Daniel', 'Rose'),
+        (3, 'Kobe', 'Bryant'),          --16
+        (3, 'Shak', 'O''neal'),         --17    
+        (3, 'Kamar', 'De''shae'),       --18
+        (3, 'Jordan', 'Pippen'),        --19
+        (3, 'Daniel', 'Rose'),          --20
 
 --Team 4 Gunnas
-        (4, 'Jerome', 'Alexander'),
-        (4, 'Jeremy', 'Alexander'),
-        (4, 'Anthony', 'Pinder'),
-        (4, 'Larry', 'Lobster'),
-        (4, 'Ahmed', 'Qurtir'),
-        (4, 'Mustafa', 'Sanchurry'),
-        (4, 'Mithun', 'Sritharan'),
-        (4, 'Darren', 'Obwa'),
-        (4, 'Royal', 'Sash'),
-        (4, 'Jaeden', 'Alexis'),
+        (4, 'Jerome', 'Alexander'),     --21
+        (4, 'Jeremy', 'Alexander'),     --22
+        (4, 'Anthony', 'Pinder'),       --23
+        (4, 'Larry', 'Lobster'),        --24
+        (4, 'Ahmed', 'Qurtir'),         --25
+        (4, 'Mustafa', 'Sanchurry'),    --26
+        (4, 'Mithun', 'Sritharan'),     --27
+        (4, 'Darren', 'Obwa'),          --28
+        (4, 'Royal', 'Sash'),           --29
+        (4, 'Jaeden', 'Alexis'),        --30
 --Team 5 BTB
-        (5, 'Andrew', 'Taylor'),
-        (5, 'Maurice', 'Jones'),
-        (5, 'Lebron', 'James'),
-        (5, 'Chris', 'Paul'),
-        (5, 'Demar', 'Derozan'),
-        (5, 'John', 'Cena'),
-        (5, 'Parke', 'Godfrey'),
+        (5, 'Andrew', 'Taylor'),        --31
+        (5, 'Maurice', 'Jones'),        --32
+        (5, 'Lebron', 'James'),         --33
+        (5, 'Chris', 'Paul'),           --34
+        (5, 'Demar', 'Derozan'),        --35
+        (5, 'John', 'Cena'),            --36
+        (5, 'Parke', 'Godfrey'),        --37
 
 --Team 6 www
         (6, 'Jordan', 'Anderson'),
@@ -96,10 +96,17 @@ VALUES  (1, 'Justin', 'Tee'),
     
 --Games Test Data
 INSERT INTO games(season, home_team, away_team, home_points, away_points, date_played)
-VALUES  (1, 3, 4, 45, 47, '2022-10-31'),
-        (1, 5, 6, 80, 77, '2022-10-31'),
-        (1, 7, 8, 40, 55, '2022-10-31');
+VALUES  (1, 3, 4, 45, 47, '2022-10-31'), --Lakers(3) vs Gunnas(4)
+        (1, 5, 6, 80, 77, '2022-10-31'), --BTB(5) vs www(6)
+        (1, 7, 8, 40, 55, '2022-10-31'); --New Era Hoopers(7) vs --Spookaz Elite(8)
 
 --Individual Player Statistics Data
-INSERT INTO player_stats(player_id, game_id, points, defensive_rebounds, offensive_rebounds, assists, steals, blocks, free_throw_attempts, free_throw_made, field_goal_attempts, field_goal_made, three_point_attempts, three_points_made, fouls, turnovers)
-VALUES  (16,1, 20, ), --Kobe Bryant
+INSERT INTO player_stats(player_id, game_id, points, defensive_rebounds, offensive_rebounds, assists, steals, blocks, free_throw_attempts, free_throw_made, two_point_attempts, two_points_made, three_point_attempts, three_points_made, fouls, turnovers)
+--Lakers
+VALUES  (16,1, 20, 5, 2, 3, 0, 0, 2, 2, 15, 6, 5, 2, 3, 6), --16 Kobe Bryant
+        --Total points left: 25, TO: 6, Assists: 2, Fouls: 3
+        --Other team attempts:5, fouls: 1
+        (17, 1, 13, 12, 4, 2, 0, 3, 5, 1, 10, 6, 0,0,3, 0),
+        --Total points left: 12, TO: 6, Assists: 6, Fouls: 6
+        --Other team attempts:18, fouls: 4
+        (18, )
