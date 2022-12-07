@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const app = express();
 
 //Middlewares
-app.use(morgan("dev"));
+//app.use(morgan("dev"));
 //order of middleware matters
 //any amount of middleware allowed
 //sequential top to bottom
@@ -12,7 +12,9 @@ app.use((req,res, next)=>{
     console.log("middleware");
     next();
 }); 
+  
 
+ 
 
 
 /*
