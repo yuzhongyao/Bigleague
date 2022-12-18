@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
+const db = require("./db");
 const app = express();
 
 //Middlewares
@@ -38,30 +39,58 @@ get Game            GET             /api/v1/games:id
 //delete Game         DELETE          /api/v1/games
 */
 
-
+ 
 
 //Get all teams in season
 //server http://localhost:4000/api/v1/teams
 //app.get(URL, Callback )
-app.get("/api/v1/teams", (req, res) =>
+app.get("/api/v1/teams", async (req, res) =>
 {
-    res.status(200).json({
+    try{
+        const result = await db.query("SELECT * FROM teams");
+        console.log(result);
+        res.status(200).json({
         status: "success",
+        result: result.rows.length,
         data:{
-            team: "Spookaz Elite",
+            teams: result.rows,
         },
         
     })
+    }
+    catch(err){
+        res.status(404).json({})
+        console.log(err);
+    }
+    
+    
 }
 );
 
 //Get a team of ID id
 //server http://localhost:4000/api/v1/teams/:id
 //app.get(URL, Callback )
-app.get("/api/v1/teams/:id", (req, res)=>
+app.get("/api/v1/teams/:id", async (req, res)=>
 {
-    console.log(req.params);
-    res.status(200).json({});
+    try{
+        const result = await db.query("SELECT * FROM teams WHERE team_name =  $1", [req.params.id]);
+
+        console.log(result);
+        res.status(200).json({
+        status: "success",
+        result: result.rows.length,
+        data:{
+            team: result.rows,
+        },
+        
+    })
+    }
+    catch(err){
+        res.status(404).json({
+
+        })
+        console.log(err);
+    }
 });
 
 //Get standings of teams
@@ -75,37 +104,101 @@ app.get("/api/v1/standings", (req, res)=>
 
 //Get all players
 //server http://localhost:4000/api/v1/players
-app.get("/api/v1/players", (req, res)=>
+app.get("/api/v1/players", async (req, res)=>
 {
-    console.log(req.baseUrl);
-    res.status(200).json({});
+    try{
+        const result = await db.query("SELECT * FROM players");
+        console.log(result);
+        res.status(200).json({
+        status: "success",
+        result: result.rows.length,
+        data:{
+            players: result.rows,
+        },
+        
+    })
+    }
+    catch(err){
+        res.status(404).json({})
+        console.log(err);
+    }
 
 });
 
 //Get player with id
-//server http://localhost:4000/api/v1/players/:id
-app.get("/api/v1/players/:id", (req, res)=>
+//server http://localhost:4000/api/v1/players/:team_name/:player_id
+app.get("/api/v1/players/:team_name/:player_id", async (req, res)=>
 {
-    console.log(req.baseUrl);
-    res.status(200).json({p: req.params,});
+    try{
+        const t = await db.query("SELECT team_id FROM teams WHERE team_name = $1", [req.params.team_name]);
+        //console.log(t.rows[0].team_id);
+        //console.log(req.params.team_name);
 
+        const result = await db.query("SELECT * FROM players WHERE player_id =  $1 AND team_id = $2", [req.params.player_id, t.rows[0].team_id]);
+
+        //console.log(result);
+        res.status(200).json({
+        status: "success",
+        result: result.rows.length,
+        data:{
+            player: result.rows,
+        },
+        
+    })
+    }
+    catch(err){
+        res.status(404).json({
+
+        })
+        console.log(err);
+    }
 });
 
 //Get all games
 //server http://localhost:4000/api/v1/games
-app.get("/api/v1/games", (req, res)=>
+app.get("/api/v1/games", async (req, res)=>
 {
-    console.log(req.baseUrl);
-    res.status(200).json({});
+    try{
+        const result = await db.query("SELECT * FROM games");
+        console.log(result);
+        res.status(200).json({
+        status: "success",
+        result: result.rows.length,
+        data:{
+            players: result.rows,
+        },
+        
+    })
+    }
+    catch(err){
+        res.status(404).json({})
+        console.log(err);
+    }
 
 });
 
 //Get game with id
-//server http://localhost:4000/api/v1/games/:id
-app.get("/api/v1/games/:id", (req, res)=>
+//server http://localhost:4000/api/v1/games/:game_id
+app.get("/api/v1/games/:game_id", async(req, res)=>
 {
-    console.log(req.baseUrl);
-    res.status(200).json({p: req.params,});
+    try{
+        //const t = await db.query("SELECT team_id FROM teams WHERE team_name = $1", [req.params.team_name]);
+
+        const result = await db.query("SELECT * FROM games WHERE game_id = $1", [req.params.game_id]);
+        console.log(result);
+        res.status(200).json({
+        status: "success",
+        result: result.rows.length,
+        data:{
+            games: result.rows,
+        },
+        
+    })
+    }
+    catch(err){
+        res.status(404).json({})
+        console.log(err);
+    }
 
 });
 
