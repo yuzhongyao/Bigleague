@@ -3,12 +3,17 @@ const express = require("express");
 const morgan = require("morgan");
 const db = require("./db");
 const app = express();
+const cors = require("cors");
 
 //Middlewares
 //app.use(morgan("dev"));
 //order of middleware matters
 //any amount of middleware allowed
 //sequential top to bottom
+
+
+app.use(cors());
+
 app.use((req,res, next)=>{
     console.log("middleware");
     next();
@@ -47,7 +52,7 @@ get Game            GET             /api/v1/games:id
 app.get("/api/v1/teams", async (req, res) =>
 {
     try{
-        const result = await db.query("SELECT * FROM teams");
+        const result = await db.query("SELECT * FROM teams ORDER BY wins DESC, points_for - points_against DESC");
         console.log(result);
         res.status(200).json({
         status: "success",
@@ -107,7 +112,7 @@ app.get("/api/v1/standings", (req, res)=>
 app.get("/api/v1/players", async (req, res)=>
 {
     try{
-        const result = await db.query("SELECT * FROM players");
+        const result = await db.query("SELECT * FROM players INNER JOIN player_stats ON players.player_id = player_stats.player_id ORDER BY player_last_name ASC");
         console.log(result);
         res.status(200).json({
         status: "success",
