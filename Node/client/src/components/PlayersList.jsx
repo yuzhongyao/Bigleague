@@ -12,7 +12,7 @@ const PlayersList = (props) =>{
         const fetchData = async () => {
             try {
                 const response = await League.get("/players");
-                console.log(response);
+                //console.log(response);
                 setPlayers(response.data.data.players);
             
             } catch (error) {

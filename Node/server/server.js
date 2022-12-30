@@ -52,7 +52,7 @@ get Game            GET             /api/v1/games:id
 app.get("/api/v1/teams", async (req, res) =>
 {
     try{
-        const result = await db.query("SELECT * FROM teams ORDER BY wins DESC, points_for - points_against DESC");
+        const result = await db.query("SELECT * FROM teams ORDER BY wins DESC, losses DESC, points_for - points_against DESC");
         console.log(result);
         res.status(200).json({
         status: "success",

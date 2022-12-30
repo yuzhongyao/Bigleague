@@ -7,7 +7,7 @@ import TeamDetails from "./routes/TeamDetails";
 import Home from "./routes/Home";
 import { TeamsContextProvider } from "./context/TeamsContext";
 import { PlayersContextProvider } from "./context/PlayersContext";
-
+import Info from "./routes/Info";
 
 
 const App = () => {
@@ -16,6 +16,7 @@ const App = () => {
         <PlayersContextProvider>
             <Routes>         
                 <Route exact path="/" element={<Home/>}/>
+                <Route exact path="/info" element={<Info/>}/>
                 <Route exact path="/players" element={<Players/>}/>
                 <Route exact path="/teams" element={<Teams/>}/>
                 <Route exact path="/players/:playerid" element={<PlayerDetails/>}/>

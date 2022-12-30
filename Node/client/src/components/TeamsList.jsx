@@ -12,7 +12,7 @@ const TeamsList = (props) =>{
         const fetchData = async () => {
             try {
                 const response = await League.get("/teams");
-                console.log(response);
+                //console.log(response);
                 setTeams(response.data.data.teams);
             
             } catch (error) {
@@ -35,6 +35,7 @@ const TeamsList = (props) =>{
                         <th scope="col">Losses</th>
                         <th scope="col">Points For</th>
                         <th scope="col">Points Against</th>
+                        <th scope="col">Point Differential</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,7 @@ const TeamsList = (props) =>{
                             <td>{team.losses}</td>
                             <td>{team.points_for}</td>
                             <td>{team.points_against}</td>
+                            <td>{team.points_for - team.points_against}</td>
                         </tr>
                         );
                        
