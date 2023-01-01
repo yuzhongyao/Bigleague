@@ -29,13 +29,13 @@ const TeamsList = (props) =>{
             <table className="table table-hover rounded rounded-4 overflow-hidden">
                 <thead >
                     <tr className="bg-danger text-light">
-                        <th scope="col">Team ID</th>
-                        <th scope="col">Team Name</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Wins</th>
                         <th scope="col">Losses</th>
-                        <th scope="col">Points For</th>
-                        <th scope="col">Points Against</th>
-                        <th scope="col">Point Differential</th>
+                        <th scope="col">PF</th>
+                        <th scope="col">PA</th>
+                        <th scope="col">Diff</th>
                     </tr>
                 </thead>
                 <tbody>

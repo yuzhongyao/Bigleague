@@ -8,9 +8,11 @@ const Navbar = () => {
         <nav className="navbar navbar-deafult">
             <div className="container-fluid">
                 <div>
+                    <Link to="/Games" className='me-5 display-5 text-decoration-none'>Games</Link>
                     <Link to="/Teams" className='me-5 display-5 text-decoration-none'>Teams</Link>
                     <Link to="/Players" className='me-5 display-5 text-decoration-none'>Players</Link>
                     <Link to="/Info" className='me-5 display-5 text-decoration-none'>Info</Link>
+
                 </div>
             </div>
         </nav>

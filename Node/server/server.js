@@ -170,7 +170,7 @@ app.get("/api/v1/games", async (req, res)=>
         status: "success",
         result: result.rows.length,
         data:{
-            players: result.rows,
+            games: result.rows,
         },
         
     })
