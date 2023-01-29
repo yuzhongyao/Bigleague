@@ -1,11 +1,12 @@
 import React, {useEffect} from "react";
 import { useContext } from "react";
-import League from "../apis/League";
-import { GamesContext, GamesContextProvider } from "../context/GamesContext";
+import League from "../../apis/League";
+import { GamesContext, GamesContextProvider } from "../../context/GamesContext";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const TeamsList = (props) =>{
-
+    let navigate = useNavigate();
     const {games, setGames} = useContext(GamesContext);
     useEffect( () => {
         //define async function inside useEffect() and call to prevent
@@ -13,7 +14,7 @@ const TeamsList = (props) =>{
         const fetchData = async () => {
             try {
                 const response = await League.get("/games");
-                console.log(response);
+                //console.log(response);
                 setGames(response.data.data.games);
             
             } catch (error) {
@@ -30,7 +31,7 @@ const TeamsList = (props) =>{
             <table className="table table-hover rounded rounded-4 overflow-hidden">
                 <thead >
                     <tr className="bg-danger text-light">
-                        <th scope="col">ID</th>
+
                         <th scope="col">Season</th>
                         <th scope="col">Home</th>
                         <th scope="col">Away</th>
@@ -43,11 +44,11 @@ const TeamsList = (props) =>{
                     {games && games.map( (game) => {
                         let date = moment(game.date_played).format("YYYY-MM-DD")
                         return(
-                        <tr key ={game.game_id}>
-                            <td>{game.game_id}</td>
+                        <tr className="clickable" key ={game.game_id} onClick={()=>navigate(`/games/${game.game_id}`)}>
+                           
                             <td>{game.season}</td>
-                            <td>{game.home_team}</td>
-                            <td>{game.away_team}</td>
+                            <td>{game.home_name}</td>
+                            <td>{game.away_name}</td>
                             <td>{game.home_points}</td>
                             <td>{game.away_points}</td>
                             <td>{date}</td>

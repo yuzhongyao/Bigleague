@@ -1,8 +1,8 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import Header from "../components/Header";
+import Footer from '../components/inAllPages/Footer';
+import Header from "../components/inAllPages/Header";
 import Navbar from '../components/Navbar';
-import PlayersList from '../components/PlayersList';
+import PlayersList from '../components/players/PlayersList';
 
 const Players = () => {
     return (<div>

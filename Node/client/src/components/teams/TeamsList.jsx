@@ -1,9 +1,14 @@
 import React, {useEffect} from "react";
 import { useContext } from "react";
-import League from "../apis/League";
-import { TeamsContext, TeamsContextProvider } from "../context/TeamsContext";
+import League from "../../apis/League";
+import { TeamsContext, TeamsContextProvider } from "../../context/TeamsContext";
+import { useNavigate } from "react-router";
+
+
+
 
 const TeamsList = (props) =>{
+    let navigate = useNavigate();
 
     const {teams, setTeams} = useContext(TeamsContext);
     useEffect( () => {
@@ -41,7 +46,8 @@ const TeamsList = (props) =>{
                 <tbody>
                     {teams && teams.map( (team) => {
                         return(
-                        <tr key ={team.team_id}>
+                        
+                        <tr className="clickable" key ={team.team_id} onClick={()=>navigate(`/teams/${team.team_id}`)}>
                             <td>{team.team_id}</td>
                             <td>{team.team_name}</td>
                             <td>{team.wins}</td>
@@ -50,6 +56,7 @@ const TeamsList = (props) =>{
                             <td>{team.points_against}</td>
                             <td>{team.points_for - team.points_against}</td>
                         </tr>
+                        
                         );
                        
                     })}

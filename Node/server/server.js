@@ -78,14 +78,16 @@ app.get("/api/v1/teams", async (req, res) =>
 app.get("/api/v1/teams/:id", async (req, res)=>
 {
     try{
-        const result = await db.query("SELECT * FROM teams WHERE team_name =  $1", [req.params.id]);
-
+    
+        const result = await db.query(`SELECT *, (SELECT team_name FROM teams WHERE team_id = p.team_id) AS team_name FROM players p WHERE p.team_id =  $1` , [req.params.id]);
+        const games = await db.query(`SELECT *, (SELECT team_name FROM teams WHERE team_id = g.away_team) AS away_name, (SELECT team_name FROM teams WHERE team_id = g.home_team) AS home_name FROM games g WHERE home_team = $1 OR away_team = $2`, [req.params.id, req.params.id]);
         console.log(result);
         res.status(200).json({
         status: "success",
-        result: result.rows.length,
+        result: result.rows.length + games.rows.length,
         data:{
             team: result.rows,
+            game: games.rows,
         },
         
     })
@@ -112,8 +114,8 @@ app.get("/api/v1/standings", (req, res)=>
 app.get("/api/v1/players", async (req, res)=>
 {
     try{
-        const result = await db.query("SELECT * FROM players INNER JOIN player_stats ON players.player_id = player_stats.player_id ORDER BY player_last_name ASC");
-        console.log(result);
+        const result = await db.query(`SELECT player_stats.player_id, (SELECT player_first_name FROM players WHERE player_id = player_stats.player_id) AS first_name, (SELECT player_last_name FROM players WHERE players.player_id = player_stats.player_id) AS last_name, SUM(points) AS points, SUM(defensive_rebounds) AS defensive_rebounds, SUM(offensive_rebounds) AS offensive_rebounds, SUM(assists) AS assists, SUM(steals) AS steals, SUM(blocks) AS blocks, SUM(free_throw_attempts) AS free_throw_attempts, SUM(free_throw_made) AS free_throw_made, SUM(two_point_attempts) AS two_point_attempts, SUM(two_points_made) AS two_points_made, SUM(three_point_attempts) AS three_point_attempts, SUM(three_points_made) AS three_points_made, SUM(fouls) AS fouls, SUM(turnovers) AS turnovers FROM player_stats GROUP BY player_stats.player_id`);
+        
         res.status(200).json({
         status: "success",
         result: result.rows.length,
@@ -164,7 +166,7 @@ app.get("/api/v1/players/:team_name/:player_id", async (req, res)=>
 app.get("/api/v1/games", async (req, res)=>
 {
     try{
-        const result = await db.query("SELECT * FROM games");
+        const result = await db.query("SELECT *,(SELECT team_name AS home_name FROM teams WHERE games.home_team = teams.team_id), (SELECT team_name AS away_name FROM teams WHERE games.away_team = teams.team_id) FROM games");
         console.log(result);
         res.status(200).json({
         status: "success",

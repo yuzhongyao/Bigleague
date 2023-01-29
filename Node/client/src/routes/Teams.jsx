@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from "../components/Header";
+import Header from "../components/inAllPages/Header";
 import Navbar from '../components/Navbar';
-import TeamsList from "../components/TeamsList";
-import Footer from "../components/Footer";
+import TeamsList from "../components/teams/TeamsList";
+import Footer from "../components/inAllPages/Footer";
 
 const Teams = () => {
     return (<div>
