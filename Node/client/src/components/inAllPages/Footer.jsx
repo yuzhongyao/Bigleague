@@ -1,12 +1,21 @@
 import React from 'react';
+import './style.css';
 
 const Footer = () =>{
+  
 
-    return (<div className="footer__container">
-    <div className="footer__links">
-      <div className="footer__link--wrapper">
+    return ( 
       
-        <div className="footer__link--items">
+      
+      
+      <div className="footer-container"> 
+      
+    
+    <div className="footer-links">
+      <div className="footer-link-wrapper">
+      
+      
+        <div className="footer-link-items">
           <h2>Contact Us</h2>
           <a href="https://instagram.com/torontobigleague">Instagram</a> 
           <a href="https://www.youtube.com/channel/UCBdt8Q5pscCyb-1FwigGiSw">Youtube</a> 
@@ -14,16 +23,17 @@ const Footer = () =>{
         </div>
       </div>
     </div>
-    <section className="social__media">
-      <div className="social__media--wrap">
-        <div className="footer__logo">
-          <a href="/" id="footer__logo"><i className="fas fa-gem"></i>Big League</a>
+    <section className="social-media">
+      <div className="social-media-wrap">
+        <div className="footer-logo">
+          <a href="/" id="footer-logo"><i className="fas fa-gem"></i>Big League</a>
+          <p className="website-rights">  © Spookaz Elite. All rights reserved</p>
         </div>
-        <p className="website__rights">© Spookaz Elite. All rights reserved</p>
-        <div className="social__icons">
+        
+        <div className="social-icons">
           
           <a
-            className="social__icon--link"
+            className="social-icon-link"
             href="https://instagram.com/torontobigleague"
             target="_blank"
             aria-label="Instagram"
@@ -43,9 +53,12 @@ const Footer = () =>{
             href="mailto:torontobigleague@gmail.com"
             target="_blank"
             aria-label="Email"
+            
           >
+          
             
             <i className="fab fa-google"></i>
+            
           </a>
         </div>
       </div>
