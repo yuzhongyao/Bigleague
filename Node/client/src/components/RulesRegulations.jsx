@@ -16,6 +16,7 @@ const RulesRegulations = () => {
                 <h2 className="Underline">2. Rules</h2>
                     <p>Officials are following FIBA rules with slight modifications<br></br>
                     Players are not allowed to touch the ball around the net after it first touches like in FIBA or else a goaltending will be called.
+                    Teams may call timeouts on the floor.</p>
                 <h2 className="Underline">2. Fouls</h2>    
                     <p>Players are allowed 5 player fouls. On the 5th player foul, that player must leave the game and cannot return.<br></br>
                     Each team is allowed 8 team fouls for each half. On the 8th foul and each foul thereafter will result in double bonus. The opposing player that got fouled will be awarded 2 free throws.<br></br>
