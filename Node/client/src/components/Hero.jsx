@@ -16,7 +16,7 @@ const Hero = () => {
         <button className="main__btn"><a href="#">Get Started</a></button>
       </div>
 
-      <video className="video" src='video.mp4' autoPlay loop muted />
+     
       
     </div>
   </div>
