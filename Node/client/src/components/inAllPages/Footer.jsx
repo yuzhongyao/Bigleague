@@ -14,13 +14,11 @@ const Footer = () =>{
     <div className="footer-links">
       <div className="footer-link-wrapper">
       
-      
-        <div className="footer-link-items">
-          <h2>Contact Us</h2>
-          <a href="https://instagram.com/torontobigleague">Instagram</a> 
-          <a href="https://www.youtube.com/channel/UCBdt8Q5pscCyb-1FwigGiSw">Youtube</a> 
-          <a href='mailto:torontobigleague@gmail.com'>Email</a>
-        </div>
+     
+       <div className="footer-link-items"> 
+         
+        </div> 
+        
       </div>
     </div>
     <section className="social-media">
@@ -29,8 +27,13 @@ const Footer = () =>{
           <a href="/" id="footer-logo"><i className="fas fa-gem"></i>Big League</a>
           <p className="website-rights">  © Spookaz Elite. All rights reserved</p>
         </div>
+
+        <p className="website-rights">  Contact Us</p>
         
         <div className="social-icons">
+
+        
+
           
           <a
             className="social-icon-link"
