@@ -109,9 +109,9 @@
   }
   .video {
     object-fit: cover;
-    width: 80%;
-    height: 80%;
-    position:;
+    max-width: 80%;
+    max-height: 50%;
+    position:relative;
     z-index: -1;
     background-color: #000000;
   
@@ -311,7 +311,7 @@
         bottom: 0;
         position: fixed;
         left: 0;
-        height: 150px;
+        height: fixed;
     
     
         
@@ -416,7 +416,7 @@
       }
       
       .social-media {
-        max-width: 1000px;
+        max-width: fixed;
         width: 100%;
       }
       
@@ -477,3 +477,4 @@
       
       @media screen and (max-width: 768px) {
       }
+
