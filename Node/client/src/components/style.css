@@ -118,15 +118,15 @@
   }
   
   .main__container {
-    position:absolute;
+    position:relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-self: center;
     margin: 0 auto;
-    height: 73vh;
+    height: 55vh;
     background-color: #ffffff;
-    z-index: 1;
+    z-index: 0;
     width: 100%;
     
     padding-right: 50px;
@@ -308,10 +308,11 @@
     .footer-container {
 
         width: 100%;
-        bottom: 0;
-        position: fixed;
+        
+        position: relative;
+        bottom: 50;
         left: 0;
-        height: fixed;
+        height: relative;
     
     
         
